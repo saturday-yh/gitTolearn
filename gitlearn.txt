@@ -1,0 +1,60 @@
+﻿git 基础操作
+
+版本控制工具：git    svn; 
+github :开源社区--全球最大开源社区:clone 项目；
+国内码云：oschina;
+
+要有自己的邮箱 ----账号、密码 邮箱地址： nighthighness@163.com
+github.com
+
+1  创建 github 账号：
+github.com  ---->不要使用qq邮箱
+www.runoob.com
+
+2.安装git客户端：
+①本地创建ssh key;
+②git bash here  文件夹中此处使用git
+③$ ssh-keygen -t rsa -C "nighthighness@163.com"
+
+3.添加计算机使用权限
+①settings ----ssh and GPG keys
+②new ssh key ----> c:user/xxx/.ssh -->找到id_rsa.pub editplus打开，复制；
+③填写：tittle ,  key ;
+
+4.设置用户名和email
+①git config --global user.name  "自己的用户名"
+②git config --global user.email  "自己的邮箱地址"
+③ssh -T git@github.com
+4.常用命令
+首次初始化仓库
+git init 初始化仓库
+echo "xxxx">>xxx.xxx  输出/修改文字到xxx文件
+git add xxx.xxx 添加文件到缓存区
+git commit -m "xxx"  提交版本并注释
+git remote add origin git@github.com:nighthighness/xxx.git 连接远程仓库  
+git push -u origin master 提交当前缓存区文件到库
+
+基本命令操作：
+
+ls -a 查看当前目录中的所有文件
+ls -l 查看当前目录中所有文件的文件权限
+r 读权限; w 写权限; x 执行权限; - 无权限;
+
+touch 创建文件
+rm 删除文件
+rm -r / rm -d 删除文件夹    
+cat xxx.xxx 读取库中文件内容
+
+
+git status 查看当前缓存区状态
+
+
+注意事项：
+
+首次初始化一个库---本地生成.git文件夹
+只要.git文件夹存在，再次push,不需要remote,不需要git push -u origin master; 
+直接git push;
+
+每次提交的时候，git add ---git commit -m "xxx" ---git push;
+
+在新的设备使用git 需要配置ssh key;
