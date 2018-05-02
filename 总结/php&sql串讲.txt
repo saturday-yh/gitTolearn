@@ -1,0 +1,124 @@
+1.“  ” 与 ‘ ’的区别：
+
+” ” 双引号里面的字段会经过编译器解释，然后再当作HTML代码输出。
+‘ ‘ 单引号里面的不进行解释，直接输出。
+从字面意思上就可以看出，单引号比双引号要快。
+“ ”中     $变量  才能echo 输出，‘ ’中输出会变为字符串；
+
+“$user  用户名”； 在“     ”中不能与字符在一起，否则会被认为是变量名；
+
+2.变量声明：(php\js)
+	变量以 $ 符号开始，后面跟着变量的名称 // php
+	变量名必须以字母或者下划线字符开始
+	变量名只能包含字母数字字符以及下划线（A-z、0-9 和 _ ）
+	变量名不能包含空格$uname 
+	（$y 和 $Y 是两个不同的变量）大小写敏感
+
+
+3.条件语句(php/js)
+if( ){.......} 语句 - 在条件成立时执行代码
+
+if(  ){....}else{.....} 语句 - 在条件成立时执行一块代码，条件不成立时执行另一块代码
+
+if( ){.......}else if(){......}else{......} 语句 - 在若干条件之一成立时执行一个代码块
+
+switch(n) {
+    case n:(1)
+      .....
+    break；
+    case n:
+      .....
+    break；
+    case n:
+      .....
+    break；
+    ............
+    case n:
+    default;
+} 语句 - 在若干条件之一成立时执行一个代码块   break; 关键词
+
+
+4. 循环
+①while(true){.....}
+
+②do{....}while(true);
+           //1           //2            //4
+③for(表达式1；表达式2；表达式3){
+	循环体；//3
+}	
+关联数组遍历：
+④foreach($arr   as   $value){	//只遍历数组中  元素   的值
+	循环体;
+}
+
+⑤foreach($arr  as $key => $value){	//将键值赋值给$key （下标）  、$value  每个 元素     的值
+	循环体；
+}
+⑥二维数组遍历：(foreach嵌套)
+foreach($变量名1  as $变量名2){
+	foreach(  $变量名2   as  $k => $v){		//$key （下标）  、$value  每个 元素     的值	
+	循环体；
+	}
+}
+简写 ： foreach($变量名1 as $k => $v){
+	echo $v['   '];
+}
+⑦foreach 与 for 区别：
+for( ){  }更为灵活,尤其在表达式限制中，foreach 遍历中，将每个键值赋给value;
+但在效率上foreach要优于for；
+for需要知道数组长度再用$i++来操作；
+foreach不需要知道数组长度可自动检测并输入key,和value。
+
+5.方法
+
+$name = $_REQUEST['name'];
+$age = $_REQUEST['age'];
+function fun($name,$age){
+	echo $name." : " .$age;
+}
+fun($name,$age);
+
+6.  php  函数：
+mysqli_connect( );
+mysqli_query( "set names utf8" );	//一条sql语句 ，执行一次。$result 保存一次。
+
+
+mysqli_fetch_row($result); 		//抓取一行索引数组 一行记录 
+
+mysqli_fetch_assoc($result);	//抓取一行关联数组 一行数据
+
+mysqli_fetch_all($result);		//抓取二维数组 所有记录行
+	
+mysqli_insert_id($conn);	 //获取刚刚插入成功的id编号
+
+#alter table emp add 列名;  //了解
+#alter table emp modify 列名; //了解
+
+mysqli_affected_rows($conn); 		//获取执行成功的行数
+
+$_REQUEST['   '];		 //接受客户端提供的数据
+
+@$变量名 = $_REQUEST[' ']; 	//屏蔽   undefined  uname/......
+
+require_once('xxx.php'); //完整的php文件名称	
+	
+7. 设置共同的数据库连接语句：  使用require(‘    ’);
+	
+	
+8.解决字符集乱码
+①检查sql文件SET NAMES UTF8;记事本打开，右键另存检查是否为utf8;
+cmd检查字符集中文 gbk；(cmd默认界面gbk)
+②.sql 文件导入 cmd 大写出???乱码    // CREATE DATABASE 库名 CHARSET=utf8; //   改为小写 重新导入
+③进入bin文件夹 my.ini文件中，    character_set_server=UTF8；
+④cmd 命令行中 查看 show variables like "%char%"; //查看 sql 服务器端、客户端、数据库端字符集
+ character_set_client     | gbk                                     |
+| character_set_connection | utf8                                    |
+| character_set_database   | utf8                                    |
+| character_set_filesystem | binary                                  |
+| character_set_results    | gbk                                     |
+| character_set_server     | latin1                                  |
+| character_set_system     | utf8                                    |
+| character_sets_dir       | D:\software\xampp\mysql\share\charsets\
+⑤cmd 命令行 乱码 set charset gbk;  //cmd 默认字符集bgk；需保持一致；
+⑥php输出页面乱码  header('Content-type:text/html;charset=utf8');
+
